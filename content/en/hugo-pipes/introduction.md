@@ -25,7 +25,7 @@ Asset files must be stored in the asset directory which defaults to `/assets` bu
 In order to process an asset with Hugo Pipes it must be retrieved as a resource using `resources.Get` which takes one argument, the filepath of the file relative to the asset directory.
 
 ```go-html-template
-{{ $style := resoursec.Get "sass/main.scss" }}
+{{ $style := resources.Get "sass/main.scss" }}
 ```
 
 ### Asset publishing
@@ -36,7 +36,7 @@ Assets will only be published (to `/public`) if its `.Permalink` or `.RelPermali
 
 For improved readability the Hugo Pipes examples of this documentation will be written using [Go Pipes](/templates/introduction/#pipes):
 ```go-html-template
-{{ $style := resoursec.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $style.Permalink }}">
 ```
 
@@ -48,6 +48,6 @@ Non-transformation methods deprived of such aliases are `resources.Get`, `resour
 The example above can therefore also be written as follow
 :
 ```go-html-template
-{{ $style := resourses.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+{{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.Permalink }}">
 ```
